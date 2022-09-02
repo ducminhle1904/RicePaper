@@ -57,7 +57,7 @@ const mockdata = [{ label: "50 loại bơ" }, { label: "50 loại me" }];
 export default function ProductCard() {
   const { classes } = useStyles();
   const features = mockdata.map((feature) => (
-    <List.Item>{feature.label}</List.Item>
+    <List.Item key={feature.label}>{feature.label}</List.Item>
   ));
 
   return (
