@@ -1,25 +1,19 @@
-import { Box } from "@chakra-ui/react";
+import { Box } from "@mantine/core";
 
-import CTASection from "lib/components/samples/CTASection";
-import SomeImage from "lib/components/samples/SomeImage";
-import SomeText from "lib/components/samples/SomeText";
+import FeatureSections from "lib/components/FeatureSections";
+import HomeBanner from "lib/components/HomeBanner";
+import ProductSection from "lib/components/ProductSection";
 
 const Home = () => {
   return (
     <Box
-      display={{ md: "flex" }}
-      alignItems="center"
-      minHeight="70vh"
-      gap={8}
-      mb={8}
-      w="full"
+      sx={() => ({
+        marginTop: 120,
+      })}
     >
-      <SomeImage />
-
-      <Box>
-        <SomeText />
-        <CTASection />
-      </Box>
+      <HomeBanner />
+      <FeatureSections />
+      <ProductSection />
     </Box>
   );
 };

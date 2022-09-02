@@ -1,8 +1,10 @@
-import { Box } from "@chakra-ui/react";
+import { Box } from "@mantine/core";
 import type { ReactNode } from "react";
 
+import { FOOTER_ITEM, HEADER_ITEM } from "lib/helper";
+
 import Footer from "./Footer";
-import Header from "./Header";
+import HeaderMiddle from "./Header";
 
 type LayoutProps = {
   children: ReactNode;
@@ -10,13 +12,23 @@ type LayoutProps = {
 
 const Layout = ({ children }: LayoutProps) => {
   return (
-    <Box margin="0 auto" maxWidth={800} transition="0.5s ease-out">
-      <Box margin="8">
-        <Header />
-        <Box as="main" marginY={22}>
+    <Box
+      sx={() => ({
+        margin: "0 auto",
+        transition: "0.5s ease-out",
+      })}
+    >
+      <Box>
+        <HeaderMiddle links={HEADER_ITEM.links} />
+        <Box
+          sx={() => ({
+            marginY: 22,
+            padding: "0 50px",
+          })}
+        >
           {children}
         </Box>
-        <Footer />
+        <Footer data={FOOTER_ITEM.data} />
       </Box>
     </Box>
   );

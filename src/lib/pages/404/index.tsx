@@ -1,59 +1,78 @@
 import {
-  Box,
-  Button,
-  Heading,
+  createStyles,
   Image,
+  Container,
+  Title,
   Text,
-  Link as ChakraLink,
-  useColorMode,
-  Flex,
-} from "@chakra-ui/react";
-import Link from "next/link";
+  Button,
+  SimpleGrid,
+} from "@mantine/core";
 
-import MotionBox from "lib/components/motion/Box";
+const useStyles = createStyles((theme) => ({
+  root: {
+    paddingTop: 80,
+    paddingBottom: 80,
+  },
 
-const Page404 = () => {
-  const { colorMode } = useColorMode();
+  title: {
+    fontWeight: 900,
+    fontSize: 34,
+    marginBottom: theme.spacing.md,
+    fontFamily: `Greycliff CF, ${theme.fontFamily}`,
+
+    [theme.fn.smallerThan("sm")]: {
+      fontSize: 32,
+    },
+  },
+
+  control: {
+    [theme.fn.smallerThan("sm")]: {
+      width: "100%",
+    },
+  },
+
+  mobileImage: {
+    [theme.fn.largerThan("sm")]: {
+      display: "none",
+    },
+  },
+
+  desktopImage: {
+    [theme.fn.smallerThan("sm")]: {
+      display: "none",
+    },
+  },
+}));
+
+export default function Page404() {
+  const { classes } = useStyles();
 
   return (
-    <Flex minHeight="70vh" direction="column" justifyContent="center">
-      <MotionBox
-        animate={{ y: 20 }}
-        transition={{ repeat: Infinity, duration: 2, repeatType: "reverse" }}
-        width={["100%", "70%", "60%", "60%"]}
-        margin="0 auto"
+    <Container className={classes.root}>
+      <SimpleGrid
+        spacing={80}
+        cols={2}
+        breakpoints={[{ maxWidth: "sm", cols: 1, spacing: 40 }]}
       >
-        <Image
-          src="/404 Error-pana.svg"
-          alt="Error 404 not found Illustration"
-        />
-      </MotionBox>
-      <Text textAlign="center" fontSize="xs">
-        <ChakraLink
-          href="https://stories.freepik.com/web"
-          isExternal
-          rel="noopener noreferrer"
-        >
-          Illustration by Freepik Stories
-        </ChakraLink>
-      </Text>
-
-      <Box marginY={4}>
-        <Heading textAlign="center">Page not Found.</Heading>
-
-        <Box textAlign="center" marginTop={4}>
-          <Text>It&apos;s Okay!</Text>
-          <Link href="/" passHref>
-            <Button
-              backgroundColor={colorMode === "light" ? "gray.300" : "teal.500"}
-            >
-              Let&apos;s Head Back
-            </Button>
-          </Link>
-        </Box>
-      </Box>
-    </Flex>
+        <Image src="/404.svg" className={classes.mobileImage} />
+        <div>
+          <Title className={classes.title}>Something is not right...</Title>
+          <Text color="dimmed" size="lg">
+            Page you are trying to open does not exist. You may have mistyped
+            the address, or the page has been moved to another URL. If you think
+            this is an error contact support.
+          </Text>
+          <Button
+            variant="outline"
+            size="md"
+            mt="xl"
+            className={classes.control}
+          >
+            Get back to home page
+          </Button>
+        </div>
+        <Image src="/404.svg" className={classes.desktopImage} />
+      </SimpleGrid>
+    </Container>
   );
-};
-
-export default Page404;
+}

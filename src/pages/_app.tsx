@@ -1,16 +1,26 @@
 /* eslint-disable react/jsx-props-no-spreading */
+import { MantineProvider } from "@mantine/core";
 import { DefaultSeo } from "next-seo";
 import type { AppProps } from "next/app";
 import Head from "next/head";
 
 import defaultSEOConfig from "../../next-seo.config";
-import { Chakra } from "lib/components/Chakra";
 import Layout from "lib/layout";
 import "lib/styles/globals.css";
+import "animate.css";
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
-    <Chakra>
+    <MantineProvider
+      withGlobalStyles
+      withNormalizeCSS
+      theme={{
+        /** Put your mantine theme override here */
+        colorScheme: "light",
+        fontFamily: "Poppins, sans-serif",
+        headings: { fontFamily: "Poppins, sans-serif" },
+      }}
+    >
       <Head>
         <meta
           name="viewport"
@@ -21,7 +31,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
       <Layout>
         <Component {...pageProps} />
       </Layout>
-    </Chakra>
+    </MantineProvider>
   );
 };
 

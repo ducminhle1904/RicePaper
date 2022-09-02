@@ -1,23 +1,19 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import { ColorModeScript } from "@chakra-ui/react";
-import type { DocumentContext } from "next/document";
+import { createGetInitialProps } from "@mantine/next";
 import Document, { Html, Head, Main, NextScript } from "next/document";
 
-import customTheme from "lib/styles/theme";
-
-const APP_NAME = "nextarter-chakra";
+const APP_NAME = "Bánh tráng Hương Gió";
+const getInitialProps = createGetInitialProps();
 
 class MyDocument extends Document {
-  static getInitialProps(ctx: DocumentContext) {
-    return Document.getInitialProps(ctx);
-  }
+  static getInitialProps = getInitialProps;
 
   render() {
     return (
       <Html lang="en">
         <Head>
           <link
-            href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700;800;900&display=swap"
             rel="stylesheet"
           />
 
@@ -37,14 +33,11 @@ class MyDocument extends Document {
             rel="apple-touch-icon"
             sizes="180x180"
             href="/icons/apple-touch-icon.png"
-          />
-          <link rel="icon" href="/app-icon.png" /> */}
+          /> */}
+          <link rel="icon" href="/Ricepaperlogo.png" />
           <link rel="manifest" href="/manifest.json" />
         </Head>
         <body>
-          <ColorModeScript
-            initialColorMode={customTheme.config?.initialColorMode}
-          />
           <Main />
           <NextScript />
         </body>
