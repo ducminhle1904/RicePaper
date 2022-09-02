@@ -4,9 +4,9 @@ const defaultSEOConfig = {
   titleTemplate: "%s | Bánh tráng Hương Gió",
   defaultTitle: "Bánh tráng Hương Gió",
   description: "Đem đến những loại bánh tráng ngon nhất trên thị trường",
-  canonical: "https://nextarter-chakra.sznm.dev",
+  canonical: "https://rice-paper.vercel.app/",
   openGraph: {
-    url: "https://nextarter-chakra.sznm.dev",
+    url: "https://rice-paper.vercel.app/",
     title: "nextarter-chakra",
     description: "Đem đến những loại bánh tráng ngon nhất trên thị trường",
     images: [
