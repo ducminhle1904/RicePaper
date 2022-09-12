@@ -1,10 +1,51 @@
-import { Center, Title, Box, Text, Grid } from "@mantine/core";
+import { Center, Title, Box, Text, Grid, Divider } from "@mantine/core";
 
+import { ContactUs } from "./ContactUsForm";
 import ProductCard from "./ProductCard";
 
 export default function ProductSection() {
   return (
     <Box>
+      <Center
+        mb={100}
+        sx={() => ({
+          display: "flex",
+          flexDirection: "column",
+        })}
+      >
+        <Title
+          color="#F28123"
+          weight={700}
+          order={1}
+          size="50px"
+          className="animate__animated animate__fadeInUp"
+          align="center"
+        >
+          TOP COMBO BÁN CHẠY
+        </Title>
+        <Text
+          color="cyan"
+          size="sm"
+          className="animate__animated animate__fadeInDown"
+          mb={50}
+        >
+          Những sản phẩm bán chạy trong tháng
+        </Text>
+        <Grid>
+          <Grid.Col sm={6} md={4} lg={3}>
+            <ProductCard />
+          </Grid.Col>
+          <Grid.Col sm={6} md={4} lg={3}>
+            <ProductCard />
+          </Grid.Col>
+          <Grid.Col sm={6} md={4} lg={3}>
+            <ProductCard />
+          </Grid.Col>
+          <Grid.Col sm={6} md={4} lg={3}>
+            <ProductCard />
+          </Grid.Col>
+        </Grid>
+      </Center>
       <Center
         mb={50}
         sx={() => ({
@@ -18,31 +59,28 @@ export default function ProductSection() {
           order={1}
           size="50px"
           className="animate__animated animate__fadeInUp"
+          align="center"
+          mb={50}
         >
-          TOP COMBO BÁN CHẠY
+          BÁNH TRÁNG TÂY NINH
         </Title>
-        <Text
-          color="cyan"
-          size="sm"
-          className="animate__animated animate__fadeInDown"
-        >
-          Những sản phẩm bán chạy trong tháng
-        </Text>
+        <Divider size="xl" color="cyan" />
+        <Grid>
+          <Grid.Col sm={6} md={4} lg={3}>
+            <ProductCard />
+          </Grid.Col>
+          <Grid.Col sm={6} md={4} lg={3}>
+            <ProductCard />
+          </Grid.Col>
+          <Grid.Col sm={6} md={4} lg={3}>
+            <ProductCard />
+          </Grid.Col>
+          <Grid.Col sm={6} md={4} lg={3}>
+            <ProductCard />
+          </Grid.Col>
+        </Grid>
       </Center>
-      <Grid>
-        <Grid.Col span={3}>
-          <ProductCard />
-        </Grid.Col>
-        <Grid.Col span={3}>
-          <ProductCard />
-        </Grid.Col>
-        <Grid.Col span={3}>
-          <ProductCard />
-        </Grid.Col>
-        <Grid.Col span={3}>
-          <ProductCard />
-        </Grid.Col>
-      </Grid>
+      <ContactUs />
     </Box>
   );
 }

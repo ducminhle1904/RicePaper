@@ -8,6 +8,7 @@ import defaultSEOConfig from "../../next-seo.config";
 import Layout from "lib/layout";
 import "lib/styles/globals.css";
 import "animate.css";
+import "nextjs-breadcrumbs/dist/index.css";
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (

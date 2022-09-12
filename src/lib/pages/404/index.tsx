@@ -7,11 +7,13 @@ import {
   Button,
   SimpleGrid,
 } from "@mantine/core";
+import Link from "next/link";
 
 const useStyles = createStyles((theme) => ({
   root: {
     paddingTop: 80,
     paddingBottom: 80,
+    marginTop: 100,
   },
 
   title: {
@@ -62,14 +64,16 @@ export default function Page404() {
             the address, or the page has been moved to another URL. If you think
             this is an error contact support.
           </Text>
-          <Button
-            variant="outline"
-            size="md"
-            mt="xl"
-            className={classes.control}
-          >
-            Get back to home page
-          </Button>
+          <Link href="/">
+            <Button
+              variant="outline"
+              size="md"
+              mt="xl"
+              className={classes.control}
+            >
+              Get back to home page
+            </Button>
+          </Link>
         </div>
         <Image src="/404.svg" className={classes.desktopImage} />
       </SimpleGrid>

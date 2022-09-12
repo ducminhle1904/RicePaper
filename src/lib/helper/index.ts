@@ -5,11 +5,11 @@ import type { FooterLinksProps, LinkItem } from "./interface";
 export const HEADER_ITEM: LinkItem = {
   links: [
     {
-      link: "#",
+      link: "/",
       label: "Trang chủ",
     },
     {
-      link: "#",
+      link: "/san-pham",
       label: "Cửa hàng",
     },
     {

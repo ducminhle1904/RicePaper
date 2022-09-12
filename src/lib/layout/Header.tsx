@@ -7,9 +7,21 @@ import {
   Header,
   Image,
   Indicator,
+  Menu,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
-import { IconSearch, IconShoppingCart } from "@tabler/icons";
+import { NextLink } from "@mantine/next";
+import {
+  IconSearch,
+  IconShoppingCart,
+  IconHome2,
+  IconBuildingStore,
+  IconArticle,
+  IconCar,
+  IconPhoneCall,
+  IconCreditCard,
+} from "@tabler/icons";
+import Link from "next/link";
 import { useState } from "react";
 
 import type { LinkItem } from "lib/helper/interface";
@@ -89,37 +101,75 @@ export default function HeaderMiddle({ links }: LinkItem) {
   const { classes, cx } = useStyles();
 
   const items = links.map((link) => (
-    <a
-      key={link.label}
-      href={link.link}
-      className={cx(classes.link, {
-        [classes.linkActive]: active === link.label,
-      })}
-      onClick={(event) => {
-        event.preventDefault();
-        setActive(link.label);
-      }}
-    >
-      {link.label}
-    </a>
+    <Link href={link.link} key={link.label} passHref>
+      <a
+        href={link.link}
+        className={cx(classes.link, {
+          [classes.linkActive]: active === link.label,
+        })}
+        onClick={() => {
+          setActive(link.label);
+        }}
+      >
+        {link.label}
+      </a>
+    </Link>
   ));
 
   return (
     <Header height={110} fixed className={classes.headerShadow}>
       <Container className={classes.inner}>
-        <Burger
-          opened={opened}
-          onClick={toggle}
-          size="sm"
-          className={classes.burger}
-        />
-        <Image
-          radius="md"
-          src="/Ricepaperlogo.png"
-          alt="Logo"
-          width={100}
-          height={100}
-        />
+        <Menu
+          shadow="md"
+          width="100%"
+          transition="rotate-right"
+          transitionDuration={150}
+        >
+          <Menu.Target>
+            <Burger
+              opened={opened}
+              onClick={toggle}
+              size="sm"
+              className={classes.burger}
+            />
+          </Menu.Target>
+
+          <Menu.Dropdown mt={30}>
+            <Menu.Item
+              component={NextLink}
+              href="/"
+              icon={<IconHome2 size={14} />}
+            >
+              Trang chủ
+            </Menu.Item>
+
+            <Menu.Item
+              component={NextLink}
+              href="/san-pham"
+              icon={<IconBuildingStore size={14} />}
+            >
+              Cửa hàng
+            </Menu.Item>
+
+            <Menu.Item icon={<IconCar size={14} />}>Đặt hàng</Menu.Item>
+            <Menu.Item icon={<IconArticle size={14} />}>Tin tức</Menu.Item>
+            <Menu.Item icon={<IconPhoneCall size={14} />}>Liên hệ</Menu.Item>
+            <Menu.Item icon={<IconCreditCard size={14} />}>
+              Thanh toán
+            </Menu.Item>
+          </Menu.Dropdown>
+        </Menu>
+        <NextLink href="/">
+          <Image
+            radius="md"
+            src="/Ricepaperlogo.png"
+            alt="Logo"
+            width={100}
+            height={100}
+            style={{ cursor: "pointer" }}
+          />
+        </NextLink>
+
         <Group className={classes.links} spacing={20}>
           {items}
         </Group>

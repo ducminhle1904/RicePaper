@@ -6,11 +6,7 @@ import ProductSection from "lib/components/ProductSection";
 
 const Home = () => {
   return (
-    <Box
-      sx={() => ({
-        marginTop: 120,
-      })}
-    >
+    <Box>
       <HomeBanner />
       <FeatureSections />
       <ProductSection />
